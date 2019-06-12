@@ -2,6 +2,7 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import './config/reactotron';
 
 import Sidebar from './components/Sidebar';
 import Player from './components/Player';
