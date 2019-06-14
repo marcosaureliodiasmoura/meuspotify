@@ -1,112 +1,137 @@
-import React from 'react';
+import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Container, Header, SongList } from './styles';
+import { Creators as PlaylistDetailsActions } from '../../store/ducks/playlistDetails';
 
 import ClockIcon from '../../assets/images/clock.svg';
 import PlusIcon from '../../assets/images/plus.svg';
 
-// console.tron.log('teste');
+class Playlist extends Component {
+  componentDidMount() {
+    this.loadPlaylistDetails();
+  }
 
-const Playlist = () => (
-  <Container>
-    <Header>
-      <img
-        src="https://www.billboard.com/files/media/Lady-Gaga-The-Fame-Monster-cover-billboard-1240.jpg"
-        alt="Playlist"
-      />
+  loadPlaylistDetails = () => {
+    const { id } = this.props.match.params;
 
-      <div>
-        <span>PLAYLIST</span>
-        <h1>Pop Forever</h1>
-        <p>23 músicas</p>
+    this.props.getPlaylistDetailsRequest(id);
+  };
 
-        <button>PLAY</button>
-      </div>
-    </Header>
+  render() {
+    return (
+      <Container>
+        <Header>
+          <img
+            src="https://www.billboard.com/files/media/Lady-Gaga-The-Fame-Monster-cover-billboard-1240.jpg"
+            alt="Playlist"
+          />
 
-    <SongList cellPadding={0} cellSpacing={0}>
-      <thead>
-        <th />
-        <th>Título</th>
-        <th>Artista</th>
-        <th>Álbum</th>
-        <th>
-          <img src={ClockIcon} alt="Duração" />
-        </th>
-      </thead>
+          <div>
+            <span>PLAYLIST</span>
+            <h1>Pop Forever</h1>
+            <p>23 músicas</p>
 
-      <tbody>
-        <tr>
-          <td>
-            <img src={PlusIcon} alt="Adicionar" />
-          </td>
-          <td>Man Down</td>
-          <td>Rihanna</td>
-          <td>Loud</td>
-          <td>3:26</td>
-        </tr>
+            <button>PLAY</button>
+          </div>
+        </Header>
 
-        <tr>
-          <td>
-            <img src={PlusIcon} alt="Adicionar" />
-          </td>
-          <td>Man Down</td>
-          <td>Rihanna</td>
-          <td>Loud</td>
-          <td>3:26</td>
-        </tr>
+        <SongList cellPadding={0} cellSpacing={0}>
+          <thead>
+            <th />
+            <th>Título</th>
+            <th>Artista</th>
+            <th>Álbum</th>
+            <th>
+              <img src={ClockIcon} alt="Duração" />
+            </th>
+          </thead>
 
-        <tr>
-          <td>
-            <img src={PlusIcon} alt="Adicionar" />
-          </td>
-          <td>Man Down</td>
-          <td>Rihanna</td>
-          <td>Loud</td>
-          <td>3:26</td>
-        </tr>
+          <tbody>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Adicionar" />
+              </td>
+              <td>Man Down</td>
+              <td>Rihanna</td>
+              <td>Loud</td>
+              <td>3:26</td>
+            </tr>
 
-        <tr>
-          <td>
-            <img src={PlusIcon} alt="Adicionar" />
-          </td>
-          <td>Man Down</td>
-          <td>Rihanna</td>
-          <td>Loud</td>
-          <td>3:26</td>
-        </tr>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Adicionar" />
+              </td>
+              <td>Man Down</td>
+              <td>Rihanna</td>
+              <td>Loud</td>
+              <td>3:26</td>
+            </tr>
 
-        <tr>
-          <td>
-            <img src={PlusIcon} alt="Adicionar" />
-          </td>
-          <td>Man Down</td>
-          <td>Rihanna</td>
-          <td>Loud</td>
-          <td>3:26</td>
-        </tr>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Adicionar" />
+              </td>
+              <td>Man Down</td>
+              <td>Rihanna</td>
+              <td>Loud</td>
+              <td>3:26</td>
+            </tr>
 
-        <tr>
-          <td>
-            <img src={PlusIcon} alt="Adicionar" />
-          </td>
-          <td>Man Down</td>
-          <td>Rihanna</td>
-          <td>Loud</td>
-          <td>3:26</td>
-        </tr>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Adicionar" />
+              </td>
+              <td>Man Down</td>
+              <td>Rihanna</td>
+              <td>Loud</td>
+              <td>3:26</td>
+            </tr>
 
-        <tr>
-          <td>
-            <img src={PlusIcon} alt="Adicionar" />
-          </td>
-          <td>Man Down</td>
-          <td>Rihanna</td>
-          <td>Loud</td>
-          <td>3:26</td>
-        </tr>
-      </tbody>
-    </SongList>
-  </Container>
-);
-export default Playlist;
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Adicionar" />
+              </td>
+              <td>Man Down</td>
+              <td>Rihanna</td>
+              <td>Loud</td>
+              <td>3:26</td>
+            </tr>
+
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Adicionar" />
+              </td>
+              <td>Man Down</td>
+              <td>Rihanna</td>
+              <td>Loud</td>
+              <td>3:26</td>
+            </tr>
+
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Adicionar" />
+              </td>
+              <td>Man Down</td>
+              <td>Rihanna</td>
+              <td>Loud</td>
+              <td>3:26</td>
+            </tr>
+          </tbody>
+        </SongList>
+      </Container>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  playlistDetails: state.playlistDetails,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(PlaylistDetailsActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Playlist);
