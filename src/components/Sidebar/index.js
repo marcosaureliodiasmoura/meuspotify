@@ -80,14 +80,12 @@ class Sidebar extends Component {
               <span>PLAYLISTS</span>
               {this.props.playlists.loading && <Loading />}
             </li>
-            <li>
-              {/* <a href="">Melhores do rock</a> */}
-              {this.props.playlists.data.map(playlist => (
-                <li key={playlist.id}>
-                  <Link to={`playlists/${playlist.id}`}>{playlist.title}</Link>
-                </li>
-              ))}
-            </li>
+
+            {this.props.playlists.data.map(playlist => (
+              <li key={playlist.id}>
+                <Link to={`/playlists/${playlist.id}`}>{playlist.title}</Link>
+              </li>
+            ))}
           </Nav>
         </div>
         <NewPlayList>
