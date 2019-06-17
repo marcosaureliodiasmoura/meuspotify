@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   loading: false,
 };
 
+// Reducer PlaylistDetails
 export default function PlaylistDetails(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_REQUEST:
