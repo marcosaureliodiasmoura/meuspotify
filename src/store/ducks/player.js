@@ -6,6 +6,8 @@ import Sound from 'react-sound';
 // 1. O type de load vai servir para quando quisermos carregar uma música (ação de dar dois cliques na música)
 export const Types = {
   LOAD: 'player/LOAD',
+  PLAY: 'player/PLAY',
+  PAUSE: 'player/PAUSE',
 };
 
 // 2. State
@@ -23,6 +25,10 @@ export default function player(state = INITIAL_STATE, action) {
     case Types.LOAD:
       // Ele força o status para playing caso esteja em pause ou parado e passa o song
       return { ...state, currentSong: action.payload.song, status: Sound.status.PLAYING };
+    case Types.PLAY:
+      return { ...state, status: Sound.status.PLAYING };
+    case Types.PAUSE:
+      return { ...state, status: Sound.status.PAUSE };
     default:
       return state;
   }
@@ -35,4 +41,6 @@ export const Creators = {
     type: Types.LOAD,
     payload: { song },
   }),
+  play: () => ({ type: Types.PLAY }),
+  pause: () => ({ type: Types.PAUSE }),
 };
