@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { Fragment } from 'react';
 import Slider from 'rc-slider';
 import Sound from 'react-sound';
 import { connect } from 'react-redux';
@@ -22,15 +22,15 @@ const Player = ({ player }) => (
     {!!player.currentSong && <Sound url={player.currentSong.file} playStatus={player.status} />}
 
     <Current>
-      <img
-        src="https://www.billboard.com/files/media/Lady-Gaga-The-Fame-Monster-cover-billboard-1240.jpg"
-        alt="imagem"
-      />
-
-      <div>
-        <span>Marry The Night</span>
-        <small>Lady Gaga</small>
-      </div>
+      {!!player.currentSong && (
+        <Fragment>
+          <img src={player.currentSong.thumbnail} alt={player.currentSong.title} />
+          <div>
+            <span>{player.currentSong.title}</span>
+            <smalL>{player.currentSong.author}</smalL>
+          </div>
+        </Fragment>
+      )}
     </Current>
 
     <Progress>
